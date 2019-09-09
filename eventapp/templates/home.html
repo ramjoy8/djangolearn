@@ -1,0 +1,24 @@
+{%if email is None%}
+  
+ <h1>HI..! </h1>
+
+ <a href="{% url 'login' %}">Add Event </a>
+ <form method="POST">
+ {% csrf_token %}
+ <label for="email">Email </label>
+ <input type="text" name='email' required>
+ <label for="passw"> Password</label>
+ <input type="password" name='passw'> 
+ <button type="submit" >LogIn </button>
+
+
+ {%if errormsg %}
+  <p> {{errormsg}}</p>
+ {%endif%}
+ <a href="{% url 'signup' %}">No Account?Register Here..!</a>
+{%else%}
+  <h1>Hi {{email}}</h1>
+{%endif%}  
+{%for events in eventsall%}
+   <h2>{{events.name}} created by {{events.created_by.email}}<h2>
+{%endfor%}   

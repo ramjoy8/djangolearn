@@ -1,0 +1,12 @@
+<h1>Hi {{user.email}} <h1>
+{%if eventsall%}
+    <h2>My Events</h2>
+    {%for event in eventsall%}
+        {{event.name}}
+    {% endfor %}
+{%else%} 
+  <p>You dont have any events</p>       
+{%endif%}
+<a href="{%url 'userhome' user.email%}">Home</a>
+<a href="{%url 'useraddevent' user %}">Add Event </a>
+<a href="{%url 'logout' %}">Logout</a>
